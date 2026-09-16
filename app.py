@@ -12,6 +12,10 @@ st.set_page_config(page_title="MYAIR CRM", page_icon="✈️", layout="wide")
 
 init_db()
 
+if get_kpis()["flights"] == 0:
+    from db.seed import seed
+    seed()
+
 if "agent_name" not in st.session_state:
     st.session_state.agent_name = AGENTS[0]
 
