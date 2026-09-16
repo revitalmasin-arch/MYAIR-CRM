@@ -25,6 +25,31 @@ with st.sidebar:
 st.title("✈️ MYAIR CRM")
 st.caption("Travel-agent workspace for flights, customers and bookings.")
 
+st.markdown(
+    """
+    <style>
+    @keyframes fly-across {
+        0%   { left: -8%;  top: 55%; transform: rotate(0deg); }
+        50%  { left: 50%;  top: 15%; transform: rotate(8deg); }
+        100% { left: 108%; top: 55%; transform: rotate(0deg); }
+    }
+    .plane-strip {
+        position: relative;
+        height: 60px;
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+    }
+    .plane-strip span {
+        position: absolute;
+        font-size: 2rem;
+        animation: fly-across 7s ease-in-out infinite;
+    }
+    </style>
+    <div class="plane-strip"><span>✈️</span></div>
+    """,
+    unsafe_allow_html=True,
+)
+
 if not db_exists():
     st.warning("No data yet. Run `python db/seed.py` from the project root, then refresh this page.")
 else:
